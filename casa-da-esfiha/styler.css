@@ -1,0 +1,619 @@
+/* === GERAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  color: #111;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === CABEÇALHO === */
+header {
+  text-align: center;
+  padding: 40px 10px 25px;
+  background: #d32f2f;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  font-size: 2.3em;
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.1em;
+  color: #ffcf33;
+  font-weight: 500;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* ======================================= */
+/* === TELA DE CADASTRO (etapa-dados) === */
+/* ======================================= */
+main {
+  padding-bottom: 70px; /* Espaço para o total fixo */
+}
+
+.cadastro-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  margin: 25px auto;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+}
+
+.cadastro-box h2 {
+  font-size: 1.5em;
+  color: #d32f2f;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* === MELHORIA ESTÉTICA: INPUTS E TEXTAREAS === */
+.cadastro-box input[type="text"],
+.cadastro-box textarea,
+.cadastro-box select { /* Adicionado o select para consistência */
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  box-sizing: border-box;
+  background-color: #fcfcfc; 
+  transition: border-color 0.2s, box-shadow 0.2s; /* Transição para sombra */
+}
+
+.cadastro-box input:focus,
+.cadastro-box textarea:focus,
+.cadastro-box select:focus {
+  border-color: #d32f2f;
+  box-shadow: 0 0 8px rgba(211, 47, 47, 0.3); /* Sombra suave vermelha no foco */
+  outline: none;
+}
+
+/* Estilo para Rádio Buttons */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.radio-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 8px;
+}
+
+.radio-group input[type="radio"] {
+    /* Esconde o input padrão */
+    opacity: 0;
+    position: absolute;
+}
+
+.radio-group label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: -4px;
+    transition: all 0.2s;
+}
+
+.radio-group input[type="radio"]:checked + label::before {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+/* Feedback de Taxa na tela de cadastro */
+#bairroInfoBox {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff3e0; 
+  border: 1px solid #ff9800;
+}
+.taxa-cadastro {
+  margin: 0;
+  font-weight: 600;
+  color: #e65100; 
+  font-size: 0.95em;
+}
+
+
+/* Estilo específico para o botão de continuar */
+#continuarBtn {
+  width: 100%;
+  text-align: center;
+  margin-top: 25px;
+}
+
+
+/* ======================================= */
+/* === TELA DE CARDÁPIO (etapa-cardapio) === */
+/* ======================================= */
+
+/* FIX: Estilo corrigido para a taxa no Cardápio */
+.taxa-cardapio {
+    font-weight: 700;
+    color: #d32f2f;
+    font-size: 0.95em;
+    padding-top: 5px;
+    border-top: 1px dashed #ddd;
+}
+
+/* Menu*/
+.menu {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  margin: 25px auto;
+  width: 90%;
+  max-width: 750px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+}
+
+.menu h2 {
+  font-size: 1.4em;
+  color: #d32f2f;
+  border-left: 5px solid #d32f2f;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #111;
+  font-weight: 600;
+  flex-grow: 1;
+  font-size: 1.05em;
+}
+
+.qtd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 10px;
+}
+
+.qtd button {
+  background: #ffcf33;
+  color: #000;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+}
+
+.qtd button:hover {
+  background: #ffd84d;
+  transform: scale(1.05);
+}
+
+.qtd input {
+  width: 50px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1em;
+  color: #111;
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.price {
+  color: #d32f2f;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* === TOTAL FIXO === */
+.total {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #d32f2f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 0;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.total-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.total-box .value {
+  color: #ffcf33;
+}
+
+/* === BOTÕES === */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 90px 0 140px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.whatsapp {
+  background: #25D366;
+}
+
+.whatsapp:hover {
+  background: #1d2922;
+  transform: scale(1.05);
+}
+
+.instagram {
+  background: linear-gradient(45deg, #f58529, #d6249f, #285AEB);
+}
+
+.instagram:hover {
+  transform: scale(1.05);
+}
+
+/* === RODAPÉ === */
+footer {
+  text-align: center;
+  padding: 15px;
+  color: #777;
+  background: #f4f4f4;
+  font-size: 0.9em;
+  margin-top: auto;
+}
+
+/* NOVO ESTILO: Bloco de Pagamento (Aesthetic update) */
+.cadastro-box-pagamento {
+    background-color: #fffaf0; /* Fundo levemente amarelado */
+    border: 2px solid #ffcf33; /* Borda cor da marca (amarelo/dourado) */
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0; /* Espaçamento interno ao .cadastro-box */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cadastro-box-pagamento h2 {
+    font-size: 1.4em;
+    color: #d32f2f; /* Cor da marca (vermelho) */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ffcf33; /* Linha divisória discreta */
+    text-align: left;
+}
+
+/* Estilo para o campo de seleção (select) de pagamento */
+#pagamento {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d32f2f; /* Borda vermelha */
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none; /* Remove o estilo padrão do SO */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Adiciona um ícone de seta customizado em SVG */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23d32f2f" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 16px;
+    transition: all 0.2s;
+}
+
+#pagamento:focus {
+    border-color: #ffcf33; /* Foco muda para amarelo/dourado */
+    box-shadow: 0 0 0 3px rgba(255, 207, 51, 0.5);
+    outline: none;
+}
+
+/* ======================================= */
+/* === STATUS DA LOJA (ABERTO/FECHADO) === */
+/* ======================================= */
+
+#statusLoja { 
+  text-align: center;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 750px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.status-aberto {
+  background-color: #d4edda; 
+  color: #155724; 
+  border: 1px solid #c3e6cb;
+}
+
+.status-fechado {
+  background-color: #f8d7da; 
+  color: #721c24; 
+  border: 1px solid #f5c6cb;
+}
+
+/* Classe para desabilitar a interação com o formulário */
+.desabilitado {
+    opacity: 0.5;
+    pointer-events: none; /* Impede cliques em elementos do form */
+}
+
+/* ======================================= */
+/* === RESUMO DO PEDIDO (ETAPA 2) === */
+/* ======================================= */
+
+/* === MELHORIA ESTÉTICA: Destaque e Sombra no Resumo === */
+.info-resumo {
+    background: #fff;
+    border-radius: 16px;
+    padding: 25px 30px; 
+    margin: 25px auto 15px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
+    border: 3px solid #ffcf33; 
+}
+
+.resumo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.resumo-header h3 {
+    color: #d32f2f;
+    font-size: 1.8em; 
+}
+
+.btn-voltar {
+    background: #ffcf33;
+    color: #333;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-voltar:hover {
+    background: #ffc400;
+}
+
+/* === MELHORIA ESTÉTICA: Estilo para o texto do resumo === */
+.resumo-texto {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.resumo-lista {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.resumo-lista li {
+    padding: 5px 0;
+    border-bottom: 1px dashed #f0f0f0;
+    font-size: 0.95em;
+    color: #444;
+}
+
+.resumo-valores {
+    text-align: right;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #111;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.resumo-taxa {
+    font-size: 1em;
+    font-weight: 600;
+    color: #d32f2f;
+    margin-top: 5px;
+    text-align: right;
+}
+/* ======================================= */
+/* === NOVO BOTÃO DE CONTINUAR (CARDÁPIO) === */
+/* ======================================= */
+
+/* Estilo do container do botão de continuar na etapa-cardapio */
+.buttons-cardapio-continuar {
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    bottom: 0;
+    z-index: 100; 
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px; 
+    box-sizing: border-box;
+}
+
+.buttons-cardapio-continuar #continuarBtn {
+  width: 100%;
+    font-size: 1.1em;
+    padding: 15px 20px;
+    background-color: #ffcf33; 
+    color: #333333; 
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons-cardapio-continuar #continuarBtn:hover {
+    background-color: #ffc200; 
+}
+
+.buttons-cardapio-continuar #continuarBtn i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+
+/* ======================================= */
+/* === AJUSTE PARA O FLUXO INVERTIDO (OPTIONAL) === */
+/* ======================================= */
+
+/* Ajusta a margem do total para não sobrepor o footer/final da tela */
+main .total {
+    margin-top: 30px; 
+    padding-bottom: 20px; 
+}
+
+/* Garante que o box de resumo (agora no topo da etapa-dados)  */
+#etapa-dados .info-resumo {
+    margin-top: 0; 
+    margin-bottom: 25px;
+}
+
+/* Estilo para a barra de informações sobre Bairro/Taxa na etapa-dados */
+.bairro-info-box {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: none; 
+}
+
+.bairro-info-box p {
+    margin: 0;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+ /* Realça a linha inteira do item */
+.menu ul li {
+    /* Adiciona transição suave para as cores */
+    transition: background-color 0.2s, border-left 0.2s;
+}
+
+/* ESTILO PARA QUANDO O ITEM FOR SELECIONADO */
+.menu ul li.selected-item {
+    background-color: #000000; 
+    border-left: 5px solid #ff0000; 
+    padding-left: 15px; 
+}
+
+/* Realça o valor unitário dentro da linha selecionada */
+.selected-item .price {
+    color: #ff0000; 
+    font-weight: 800; 
+}
+/* === ESCONDE O TOTAL FIXO NAS ETAPAS ONDE NÃO DEVE APARECER === */
+.total.hidden {
+    display: none !important;
+}
+/* === ESCONDE O TOTAL FIXO NAS ETAPAS ONDE NÃO DEVE APARECER === */
+.total.hidden {
+    display: none !important;
+}
+#totalCardapio {
+  position: sticky;
+  bottom: 0;
+  background: #d32f2f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 0;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+}
+#totalCardapio .value {
+  color: #ffcf33;
+  font-weight: 700;
+}
